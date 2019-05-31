@@ -9,8 +9,8 @@ import modele.Matiere;
  *
  * @author louis
  */
-public class MatiereDAO {
-     public MatiereDAO(Connection conn) {
+public class MatiereDAO extends DAO<Matiere> {
+     public MatiereDAO(Connexion conn) {
     super(conn);
   }
 
@@ -26,7 +26,8 @@ public class MatiereDAO {
     return false;
   }
   
+  /*
   public Matiere find(int id) {
     
-  }
+  }*/
 }

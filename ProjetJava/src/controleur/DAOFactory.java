@@ -5,6 +5,8 @@
  */
 package controleur;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author louis
@@ -12,7 +14,8 @@ package controleur;
 public class DAOFactory {
     
     ///issu d'openclassroom, a adapter a notre methode connection.
-    protected static final Connection conn = SdzConnection.getInstance();   
+    
+    protected static final Connexion conn = new Connexion("localhost","root","");   
    
   /**
   * Retourne un objet Bulletin interagissant avec la BDD

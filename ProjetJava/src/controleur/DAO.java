@@ -13,9 +13,9 @@ import java.sql.Connection;
  * @author louis
  */
 public abstract class DAO<T> {
-    protected Connection connect = null;
+    protected Connexion connect = null;
    
-  public DAO(Connection conn){
+  public DAO(Connexion conn){
     this.connect = conn;
   }
    
@@ -45,5 +45,5 @@ public abstract class DAO<T> {
   * @param id
   * @return T
   */
-  public abstract T find(int id);
+  //public abstract T find(int id); //A compléter
 }

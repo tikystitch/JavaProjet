@@ -13,7 +13,7 @@ import java.sql.Connection;
  * @author louis
  */
 public class EleveDAO extends DAO<Eleve> {
-    public EleveDAO(Connection conn) {
+    public EleveDAO(Connexion conn) {
     super(conn);
   }
 
@@ -29,7 +29,8 @@ public class EleveDAO extends DAO<Eleve> {
     return false;
   }
   
+  /*
   public Eleve find(int id) {
     
-  }
+  }*/
 }

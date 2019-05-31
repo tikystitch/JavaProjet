@@ -9,8 +9,8 @@ import modele.Prof;
  *
  * @author louis
  */
-public class ProfDAO {
-     public ProfDAO(Connection conn) {
+public class ProfDAO extends DAO<Prof> {
+     public ProfDAO(Connexion conn) {
     super(conn);
   }
 
@@ -26,7 +26,9 @@ public class ProfDAO {
     return false;
   }
   
+  /*
   public Prof find(int id) {
     
   }
+*/
 }

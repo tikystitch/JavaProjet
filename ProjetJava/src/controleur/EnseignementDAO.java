@@ -9,8 +9,8 @@ import modele.Enseignement;
  *
  * @author louis
  */
-public class EnseignementDAO {
-     public EnseignementDAO(Connection conn) {
+public class EnseignementDAO extends DAO<Enseignement> {
+     public EnseignementDAO(Connexion conn) {
     super(conn);
   }
 
@@ -25,8 +25,9 @@ public class EnseignementDAO {
   public boolean update(Enseignement obj) {
     return false;
   }
-  
+ /* 
   public Enseignement find(int id) {
     
   }
+*/
 }

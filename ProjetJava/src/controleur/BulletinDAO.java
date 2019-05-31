@@ -9,8 +9,8 @@ import modele.Bulletin;
  *
  * @author louis
  */
-public class BulletinDAO {
-    public BulletinDAO(Connection conn) {
+public class BulletinDAO extends DAO<Bulletin> {
+    public BulletinDAO(Connexion conn) {
     super(conn);
   }
 
@@ -26,7 +26,9 @@ public class BulletinDAO {
     return false;
   }
   
+  /*
   public Bulletin find(int id) {
     
   }
+*/
 }

@@ -4,17 +4,47 @@
  * and open the template in the editor.
  */
 package controleur;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modele.Trimestre;
 /**
  *
  * @author louis
  */
 public class TrimestreDAO extends DAO<Trimestre> {
-     public TrimestreDAO(Connexion conn) {
+     private Statement stmt;  
+    public TrimestreDAO(Connection conn) {
     super(conn);
+    this.stmt = null;
   }
 
   public boolean add(Trimestre obj) {
+    String query =  "INSERT INTO trimestre (id,nom,debut,fin,idbulletin) VALUES ("+ obj.getId() +
+                ",'"+obj.getNom()+
+                "','"+obj.getDateDebut()+
+                "','"+obj.getDateFin()+
+                "',"+obj.getId_bulletin()+")";
+     try{
+         this.stmt = this.connect.createStatement(); 
+         int rs = this.stmt.executeUpdate(query); 
+     }catch(SQLException e )
+     {
+         System.out.println(e);
+     } finally 
+     {
+         if (this.stmt != null )
+         {
+             try {
+                 this.stmt.close();
+             } catch (SQLException ex) {
+                 Logger.getLogger(EleveDAO.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         }
+     }
+    
     return false;
   }
 

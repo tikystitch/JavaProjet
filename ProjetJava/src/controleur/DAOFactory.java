@@ -17,7 +17,7 @@ public class DAOFactory {
     
     ///issu d'openclassroom, a adapter a notre methode connection.
     
-    protected static Connexion conn;   
+    protected static Connection conn;   
    /*
     Static {
         Connection buffer = null; 
@@ -47,7 +47,7 @@ public class DAOFactory {
         {
             System.out.println("Attention exception: "+ a );
         }
-    conn = buffer; 
+    conn = buffer.getConnection() ; 
     }    
     
   /**

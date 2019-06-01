@@ -4,17 +4,46 @@
  * and open the template in the editor.
  */
 package controleur;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modele.Notes;
 /**
  *
  * @author louis
  */
 public class NotesDAO extends DAO<Notes> {
-     public NotesDAO(Connexion conn) {
+    private Statement stmt; 
+    public NotesDAO(Connection conn) {
     super(conn);
+    this.stmt = null;
   }
 
   public boolean add(Notes obj) {
+    String query =  "INSERT INTO notes (id,note,appreciation,idbulletinmatiere) VALUES ("+ obj.getId() +
+                ",'"+obj.getNote()+
+                ",'"+obj.getAppreciation()+
+                "',"+obj.getId_bulletin_matiere()+")";
+     try{
+         this.stmt = this.connect.createStatement(); 
+         int rs = this.stmt.executeUpdate(query); 
+     }catch(SQLException e )
+     {
+         System.out.println(e);
+     } finally 
+     {
+         if (this.stmt != null )
+         {
+             try {
+                 this.stmt.close();
+             } catch (SQLException ex) {
+                 Logger.getLogger(EleveDAO.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         }
+     }
+    
     return false;
   }
 

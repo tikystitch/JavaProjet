@@ -96,6 +96,12 @@ public class Connexion {
 
         }
     }
+    
+    //Méthode qui permet de renvoyer Connection.
+    public Connection getConnection( )
+    {
+        return this.conn; 
+    }
 
     /**
      * Méthode qui ajoute la table en parametre dans son ArrayList

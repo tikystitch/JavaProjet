@@ -27,5 +27,46 @@ public class Trimestre {
         this.dateDebut=debut;
         this.dateFin=fin;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public Date getDateDebut() {
+        return dateDebut;
+    }
+
+    public void setDateDebut(Date dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+
+    public Date getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
+    }
+
+    public int getId_bulletin() {
+        return id_bulletin;
+    }
+
+    public void setId_bulletin(int id_bulletin) {
+        this.id_bulletin = id_bulletin;
+    }
+    
     
 }

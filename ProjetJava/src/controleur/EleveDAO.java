@@ -7,6 +7,8 @@ package controleur;
 
 import modele.Eleve;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
@@ -16,32 +18,66 @@ import java.sql.*;
  */
 public class EleveDAO extends DAO<Eleve> {
     private Statement stmt;
-    private Connection conn;
+    //private Connection conn;
     
-    public EleveDAO(Connexion conn) {
+    public EleveDAO(Connection conn) {
     super(conn);
+    this.stmt = null;
   }
 
+    @Override
   public boolean add(Eleve obj) {
+      
+      /*
       try{
-        ResultSet result = this.conn.createStatement(
+        ResultSet result = this.connect.createStatement(
         ResultSet.TYPE_SCROLL_INSENSITIVE,
         ResultSet.CONCUR_READ_ONLY).executeQuery(
-                "INSERT INTO eleve (nom, prenom, classe, bulletin) VALUES ("+obj.getNom()+
-                ","+obj.getPrenom()+
-                ","+obj.getClasse()+
-                ","+obj.getBulletin()+")");
+                "INSERT INTO eleve (id,nom, prenom, classe, bulletin) VALUES ("+4+",'jfuf','dyfsy',"+45+","+58+")"); 
+                
+                
+                
+                //"INSERT INTO eleve (`nom`, `prenom`, `classe`, `bulletin`) VALUES ("+obj.getNom()+
+                //","+obj.getPrenom()+
+                //","+obj.getClasse()+
+                //","+obj.getBulletin()+")");
         System.out.println("ajout de:"+obj.getNom()+" "+obj.getPrenom());
       }
       catch (SQLException e) {
-      e.printStackTrace();
+          System.out.println("Exception: "+ e ); 
     }
+      */
+    
+    //String query = "INSERT INTO eleve (id,nom, prenom, classe, bulletin) VALUES ("+4+",'jfuf','dyfsy',"+45+","+58+")"; 
+     String query =  "INSERT INTO eleve (id,nom, prenom, classe, bulletin) VALUES ("+ obj.getId() +
+                ",'"+obj.getNom()+
+                "','"+obj.getPrenom()+
+                "',"+obj.getClasse()+
+                ","+obj.getBulletin()+")";
+     try{
+         this.stmt = this.connect.createStatement(); 
+         int rs = this.stmt.executeUpdate(query); 
+     }catch(SQLException e )
+     {
+         System.out.println(e);
+     } finally 
+     {
+         if (this.stmt != null )
+         {
+             try {
+                 this.stmt.close();
+             } catch (SQLException ex) {
+                 Logger.getLogger(EleveDAO.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         }
+     }
+    
     return false;
   }
 
   public boolean supp(Eleve obj) {
       try{
-        ResultSet result = this.conn.createStatement(
+        ResultSet result = this.connect.createStatement(
         ResultSet.TYPE_SCROLL_INSENSITIVE,
         ResultSet.CONCUR_READ_ONLY).executeQuery("DELETE * FROM eleve WHERE id = " + obj.getId());
         System.out.println("suppression de:"+obj.getNom()+" "+obj.getPrenom());
@@ -54,8 +90,8 @@ public class EleveDAO extends DAO<Eleve> {
    
   public boolean update(Eleve obj) {
       
-      try{
-        ResultSet result = this.conn.createStatement(
+     /* try{
+        ResultSet result = this.connect.createStatement(
         ResultSet.TYPE_SCROLL_INSENSITIVE,
         ResultSet.CONCUR_READ_ONLY).executeQuery(
                 "UPDATE eleve SET nom='"+obj.getNom()+
@@ -68,7 +104,30 @@ public class EleveDAO extends DAO<Eleve> {
       catch (SQLException e) {
       e.printStackTrace();
     }
-   return false;
+   return false;*/
+     String query ="UPDATE eleve SET nom='"+obj.getNom()+
+                "',prenom='"+obj.getPrenom()+
+                "',classe='"+obj.getClasse()+
+                "',bulletin='"+obj.getBulletin()+
+                "WHERE id = " + obj.getId();
+     try{
+         this.stmt = this.connect.createStatement(); 
+         int rs = this.stmt.executeUpdate(query); 
+     }catch(SQLException e )
+     {
+         System.out.println(e);
+     } finally 
+     {
+         if (this.stmt != null )
+         {
+             try {
+                 this.stmt.close();
+             } catch (SQLException ex) {
+                 Logger.getLogger(EleveDAO.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         }
+     }
+     return false;
   }
   
   
@@ -76,13 +135,13 @@ public class EleveDAO extends DAO<Eleve> {
         Eleve eleve = new Eleve();      
       
     try {
-        ResultSet result = this.conn.createStatement(
+        ResultSet result = this.connect.createStatement(
         ResultSet.TYPE_SCROLL_INSENSITIVE,
         ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM eleve WHERE id = " + id);
         
         if(result.first())
         eleve = new Eleve(
-          id,
+          id,  
           result.getString("nom"),
           result.getString("prenom"),
           Integer.parseInt(result.getString("classe")),

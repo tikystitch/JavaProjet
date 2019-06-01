@@ -18,11 +18,12 @@ public class Prof {
 
     public Prof() {
     }
-    public Prof(int id, String nom, String prenom, int classe) {
+    public Prof(int id, String nom, String prenom, int classe, int id_enseignement) {
         this.id=id;
         this.nom=nom;
         this.prenom=prenom;
         this.classe=classe;
+        this.id_enseignement=id_enseignement;
     }
 
     public int getId() {

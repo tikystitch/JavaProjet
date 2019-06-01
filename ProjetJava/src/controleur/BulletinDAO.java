@@ -39,7 +39,7 @@ public class BulletinDAO extends DAO<Bulletin> {
              try {
                  this.stmt.close();
              } catch (SQLException ex) {
-                 Logger.getLogger(EleveDAO.class.getName()).log(Level.SEVERE, null, ex);
+                 Logger.getLogger(BulletinDAO.class.getName()).log(Level.SEVERE, null, ex);
              }
          }
      }
@@ -55,9 +55,9 @@ public class BulletinDAO extends DAO<Bulletin> {
     return false;
   }
   
-  /*
+  
   public Bulletin find(int id) {
-    
-  }*/
+    return null;
+  }
 
 }

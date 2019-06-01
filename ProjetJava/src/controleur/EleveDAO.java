@@ -132,9 +132,7 @@ public class EleveDAO extends DAO<Eleve> {
   
   
   public Eleve find(int id) {
-        Eleve eleve = new Eleve();      
-      
-    try {
+    /*try {
         ResultSet result = this.connect.createStatement(
         ResultSet.TYPE_SCROLL_INSENSITIVE,
         ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM eleve WHERE id = " + id);
@@ -148,7 +146,33 @@ public class EleveDAO extends DAO<Eleve> {
           Integer.parseInt(result.getString("bulletin")));         
     } catch (SQLException e) {
       e.printStackTrace();
-    }
+    }*/
+    Eleve eleve = new Eleve();
+    String query="SELECT * FROM eleve WHERE id = "+id;
+    try{
+         this.stmt = this.connect.createStatement(); 
+         ResultSet result = this.stmt.executeQuery(query); 
+          if(result.first())
+        eleve = new Eleve(
+          id,  
+          result.getString("nom"),
+          result.getString("prenom"),
+          Integer.parseInt(result.getString("classe")),
+          Integer.parseInt(result.getString("bulletin")));
+     }catch(SQLException e )
+     {
+         System.out.println(e);
+     } finally 
+     {
+         if (this.stmt != null )
+         {
+             try {
+                 this.stmt.close();
+             } catch (SQLException ex) {
+                 Logger.getLogger(EleveDAO.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         }
+     }
     return eleve;
   }
   

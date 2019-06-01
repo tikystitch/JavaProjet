@@ -40,7 +40,7 @@ public class TrimestreDAO extends DAO<Trimestre> {
              try {
                  this.stmt.close();
              } catch (SQLException ex) {
-                 Logger.getLogger(EleveDAO.class.getName()).log(Level.SEVERE, null, ex);
+                 Logger.getLogger(TrimestreDAO.class.getName()).log(Level.SEVERE, null, ex);
              }
          }
      }
@@ -55,9 +55,8 @@ public class TrimestreDAO extends DAO<Trimestre> {
   public boolean update(Trimestre obj) {
     return false;
   }
- /* 
+ 
   public Trimestre find(int id) {
-    
+    return null;
   }
-*/
 }

@@ -38,7 +38,7 @@ public class Bulletin_matiereDAO extends DAO<Bulletin_matiere>  {
              try {
                  this.stmt.close();
              } catch (SQLException ex) {
-                 Logger.getLogger(EleveDAO.class.getName()).log(Level.SEVERE, null, ex);
+                 Logger.getLogger(Bulletin_matiereDAO.class.getName()).log(Level.SEVERE, null, ex);
              }
          }
      }
@@ -54,9 +54,9 @@ public class Bulletin_matiereDAO extends DAO<Bulletin_matiere>  {
     return false;
   }
   
-  /*
+  
   public Bulletin_matiere find(int id) {
-    
+    return null;
   }
-*/
+
 }

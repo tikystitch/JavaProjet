@@ -39,7 +39,7 @@ public class NotesDAO extends DAO<Notes> {
              try {
                  this.stmt.close();
              } catch (SQLException ex) {
-                 Logger.getLogger(EleveDAO.class.getName()).log(Level.SEVERE, null, ex);
+                 Logger.getLogger(NotesDAO.class.getName()).log(Level.SEVERE, null, ex);
              }
          }
      }
@@ -54,8 +54,8 @@ public class NotesDAO extends DAO<Notes> {
   public boolean update(Notes obj) {
     return false;
   }
-  /*
+  
   public Notes find(int id) {
-    
-  }*/
+    return null;
+  }
 }

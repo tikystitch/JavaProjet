@@ -40,7 +40,7 @@ public class MatiereDAO extends DAO<Matiere> {
              try {
                  this.stmt.close();
              } catch (SQLException ex) {
-                 Logger.getLogger(EleveDAO.class.getName()).log(Level.SEVERE, null, ex);
+                 Logger.getLogger(MatiereDAO.class.getName()).log(Level.SEVERE, null, ex);
              }
          }
      }
@@ -56,8 +56,8 @@ public class MatiereDAO extends DAO<Matiere> {
     return false;
   }
   
-  /*
+  
   public Matiere find(int id) {
-    
-  }*/
+    return null;
+  }
 }

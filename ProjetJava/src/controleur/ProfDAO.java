@@ -5,6 +5,7 @@
  */
 package controleur;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -41,7 +42,7 @@ public class ProfDAO extends DAO<Prof> {
              try {
                  this.stmt.close();
              } catch (SQLException ex) {
-                 Logger.getLogger(EleveDAO.class.getName()).log(Level.SEVERE, null, ex);
+                 Logger.getLogger(ProfDAO.class.getName()).log(Level.SEVERE, null, ex);
              }
          }
      }
@@ -57,9 +58,35 @@ public class ProfDAO extends DAO<Prof> {
     return false;
   }
   
-  /*
+  
   public Prof find(int id) {
-    
+        Prof p = new Prof();
+    String query="SELECT * FROM prof WHERE id = "+id;
+    try{
+         this.stmt = this.connect.createStatement(); 
+         ResultSet result = this.stmt.executeQuery(query); 
+          if(result.first())
+        p = new Prof(
+          id,  
+          result.getString("nom"),
+          result.getString("prenom"),
+          Integer.parseInt(result.getString("classe")),
+          Integer.parseInt(result.getString("idenseignement")));
+     }catch(SQLException e )
+     {
+         System.out.println(e);
+     } finally 
+     {
+         if (this.stmt != null )
+         {
+             try {
+                 this.stmt.close();
+             } catch (SQLException ex) {
+                 Logger.getLogger(ProfDAO.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         }
+     }
+    return p;
   }
-*/
+
 }

@@ -37,7 +37,7 @@ public class EnseignementDAO extends DAO<Enseignement> {
              try {
                  this.stmt.close();
              } catch (SQLException ex) {
-                 Logger.getLogger(EleveDAO.class.getName()).log(Level.SEVERE, null, ex);
+                 Logger.getLogger(EnseignementDAO.class.getName()).log(Level.SEVERE, null, ex);
              }
          }
      }
@@ -52,9 +52,9 @@ public class EnseignementDAO extends DAO<Enseignement> {
   public boolean update(Enseignement obj) {
     return false;
   }
- /* 
+
   public Enseignement find(int id) {
-    
+    return null;
   }
-*/
+
 }

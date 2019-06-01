@@ -5,11 +5,13 @@
  */
 package controleur;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modele.Classe;
+
 /**
  *
  * @author louis
@@ -41,7 +43,7 @@ public class ClasseDAO extends DAO<Classe>{
              try {
                  this.stmt.close();
              } catch (SQLException ex) {
-                 Logger.getLogger(EleveDAO.class.getName()).log(Level.SEVERE, null, ex);
+                 Logger.getLogger(ClasseDAO.class.getName()).log(Level.SEVERE, null, ex);
              }
          }
      }
@@ -57,9 +59,8 @@ public class ClasseDAO extends DAO<Classe>{
     return false;
   }
   
-  /*
+  
   public Classe find(int id) {
-    
+      return null;
   }
-*/
 }

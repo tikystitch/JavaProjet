@@ -45,5 +45,6 @@ public abstract class DAO<T> {
   * @param id
   * @return T
   */
-  //public abstract T find(int id); //A compléter
+  //public abstract T find(int id); //A compléter   //////////////////////////////
+          
 }

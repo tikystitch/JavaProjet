@@ -29,6 +29,6 @@ public class BulletinDAO extends DAO<Bulletin> {
   /*
   public Bulletin find(int id) {
     
-  }
-*/
+  }*/
+
 }

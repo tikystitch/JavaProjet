@@ -5,6 +5,8 @@
  */
 package controleur;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
@@ -15,8 +17,39 @@ public class DAOFactory {
     
     ///issu d'openclassroom, a adapter a notre methode connection.
     
-    protected static final Connexion conn = new Connexion("localhost","root","");   
-   
+    protected static Connexion conn;   
+   /*
+    Static {
+        Connection buffer = null; 
+        
+        try
+        {
+            Class.forName("com.mysql.jdbc.Driver"); 
+            buffer = DriverManager.getConnection("jdbc:mysql://localhost/projet_java","root",""); 
+        }
+        catch( ClassNotFoundException | SQLException a)
+        {
+            System.out.println("Attention exception: "+ a );
+        }
+        conn = buffer; 
+    }
+*/
+    //A modifier pour inclure l'access en ligne
+    //Pour l'instant Wamp
+    static {
+    Connexion buffer = null; 
+    try
+    {   //Utilisation du constructeur de M.Segado pour la connexion
+        buffer = new Connexion( "projet_java", "root", "");         
+    }
+    //Catch des exceptions si la classe n'est pas trouvé ou si il y a un pb SQL
+     catch( ClassNotFoundException | SQLException a)
+        {
+            System.out.println("Attention exception: "+ a );
+        }
+    conn = buffer; 
+    }    
+    
   /**
   * Retourne un objet Bulletin interagissant avec la BDD
   * @return DAO
@@ -52,7 +85,7 @@ public class DAOFactory {
   * Retourne un objet Eleve interagissant avec la BDD
   * @return DAO
   */
-  public static DAO getleveDAO(){
+  public static DAO getEleveDAO(){
     return new EleveDAO(conn);
   }   
     /**

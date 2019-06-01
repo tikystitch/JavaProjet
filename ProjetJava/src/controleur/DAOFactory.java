@@ -17,7 +17,7 @@ public class DAOFactory {
     
     ///issu d'openclassroom, a adapter a notre methode connection.
     
-    protected static Connexion conn;   
+    protected static Connection conn;   
    /*
     Static {
         Connection buffer = null; 
@@ -34,6 +34,8 @@ public class DAOFactory {
         conn = buffer; 
     }
 */
+    //A modifier pour inclure l'access en ligne
+    //Pour l'instant Wamp
     static {
     Connexion buffer = null; 
     try
@@ -45,7 +47,7 @@ public class DAOFactory {
         {
             System.out.println("Attention exception: "+ a );
         }
-    conn = buffer; 
+    conn = buffer.getConnection() ; 
     }    
     
   /**
@@ -83,7 +85,7 @@ public class DAOFactory {
   * Retourne un objet Eleve interagissant avec la BDD
   * @return DAO
   */
-  public static DAO getleveDAO(){
+  public static DAO getEleveDAO(){
     return new EleveDAO(conn);
   }   
     /**

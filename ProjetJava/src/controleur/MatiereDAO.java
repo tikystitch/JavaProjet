@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 package controleur;
+import java.sql.Connection;
 import modele.Matiere;
 /**
  *
  * @author louis
  */
 public class MatiereDAO extends DAO<Matiere> {
-     public MatiereDAO(Connexion conn) {
+     public MatiereDAO(Connection conn) {
     super(conn);
   }
 

@@ -61,6 +61,8 @@ public class Connexion {
 
         // création d'un ordre SQL (statement)
         stmt = conn.createStatement();
+        
+        System.out.println("Vous vous êtes bien co "); 
     }
 
     /**
@@ -93,6 +95,12 @@ public class Connexion {
             stmt = conn.createStatement();
 
         }
+    }
+    
+    //Méthode qui permet de renvoyer Connection.
+    public Connection getConnection( )
+    {
+        return this.conn; 
     }
 
     /**

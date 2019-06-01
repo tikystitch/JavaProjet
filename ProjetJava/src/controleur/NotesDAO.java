@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 package controleur;
+import java.sql.Connection;
 import modele.Notes;
 /**
  *
  * @author louis
  */
 public class NotesDAO extends DAO<Notes> {
-     public NotesDAO(Connexion conn) {
+     public NotesDAO(Connection conn) {
     super(conn);
   }
 

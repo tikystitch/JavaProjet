@@ -19,7 +19,7 @@ public class Eleve {
     public Eleve() {
     }
     
-    public Eleve(int id, String nom, String prenom,int classe, int bulletin) {
+    public Eleve( int id,String nom, String prenom,int classe, int bulletin) {
         this.id=id;
         this.nom=nom;
         this.prenom=prenom;
@@ -28,7 +28,7 @@ public class Eleve {
     }   
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -36,7 +36,7 @@ public class Eleve {
     }
 
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 
     public void setNom(String nom) {
@@ -44,7 +44,7 @@ public class Eleve {
     }
 
     public String getPrenom() {
-        return prenom;
+        return this.prenom;
     }
 
     public void setPrenom(String prenom) {
@@ -52,7 +52,7 @@ public class Eleve {
     }
 
     public int getClasse() {
-        return classe;
+        return this.classe;
     }
 
     public void setClasse(int classe) {
@@ -60,7 +60,7 @@ public class Eleve {
     }
 
     public int getBulletin() {
-        return bulletin;
+        return this.bulletin;
     }
 
     public void setBulletin(int bulletin) {

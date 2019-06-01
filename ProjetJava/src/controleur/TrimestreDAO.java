@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 package controleur;
+import java.sql.Connection;
 import modele.Trimestre;
 /**
  *
  * @author louis
  */
 public class TrimestreDAO extends DAO<Trimestre> {
-     public TrimestreDAO(Connexion conn) {
+     public TrimestreDAO(Connection conn) {
     super(conn);
   }
 

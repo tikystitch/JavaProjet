@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 package controleur;
+import java.sql.Connection;
 import modele.Bulletin;
 /**
  *
  * @author louis
  */
 public class BulletinDAO extends DAO<Bulletin> {
-    public BulletinDAO(Connexion conn) {
+    public BulletinDAO(Connection conn) {
     super(conn);
   }
 
@@ -29,6 +30,6 @@ public class BulletinDAO extends DAO<Bulletin> {
   /*
   public Bulletin find(int id) {
     
-  }
-*/
+  }*/
+
 }

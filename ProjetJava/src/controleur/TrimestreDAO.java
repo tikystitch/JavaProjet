@@ -11,7 +11,7 @@ import modele.Trimestre;
  * @author louis
  */
 public class TrimestreDAO extends DAO<Trimestre> {
-     public TrimestreDAO(Connection conn) {
+     public TrimestreDAO(Connexion conn) {
     super(conn);
   }
 
@@ -26,9 +26,9 @@ public class TrimestreDAO extends DAO<Trimestre> {
   public boolean update(Trimestre obj) {
     return false;
   }
- /* 
+ 
   public Trimestre find(int id) {
-    
+    return null;     
   }
-*/
+
 }

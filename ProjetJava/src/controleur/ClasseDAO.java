@@ -11,7 +11,7 @@ import modele.Classe;
  * @author louis
  */
 public class ClasseDAO extends DAO<Classe>{
-     public ClasseDAO(Connection conn) {
+     public ClasseDAO(Connexion conn) {
     super(conn);
   }
 
@@ -27,9 +27,10 @@ public class ClasseDAO extends DAO<Classe>{
     return false;
   }
   
-  /*
+ 
   public Classe find(int id) {
+    return null; 
     
   }
-*/
+
 }

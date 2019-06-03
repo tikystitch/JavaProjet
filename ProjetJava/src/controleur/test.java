@@ -20,18 +20,22 @@ public class test {
         try
          {
            Connexion  a = new Connexion ("projet_java","root", ""); 
-           eleveDao = new EleveDAO(a.getConnection());
+           //eleveDao = new EleveDAO(a.getConnection());
+           eleveDao = new EleveDAO(a);
+           
          }
          catch( ClassNotFoundException | SQLException b)
             {
                 System.out.println("Attention exception: "+ b );
             }
           
-        Eleve e = new Eleve(5, "Jimmy", "Vuong",1, 1);
-         boolean add = eleveDao.add(e);
-         //En utilisant la factory
-         //DAO<Eleve> eleveDao = DAOFactory.getEleveDAO();
-        
+        Eleve e = new Eleve(5, "Louis", "Samir",1, 1);
+        //boolean add = eleveDao.add(e);
+        // boolean add = eleveDao.supp(e); 
+        //boolean add = eleveDao.update(e); 
+        //En utilisant la factory
+        //DAO<Eleve> eleveDao = DAOFactory.getEleveDAO();
+        System.out.println(eleveDao.find(1).getNom()); 
        
      }   
 }

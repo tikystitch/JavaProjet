@@ -11,7 +11,7 @@ import modele.Notes;
  * @author louis
  */
 public class NotesDAO extends DAO<Notes> {
-     public NotesDAO(Connection conn) {
+     public NotesDAO(Connexion conn) {
     super(conn);
   }
 
@@ -26,8 +26,9 @@ public class NotesDAO extends DAO<Notes> {
   public boolean update(Notes obj) {
     return false;
   }
-  /*
+  
   public Notes find(int id) {
+    return null; 
     
-  }*/
+  }
 }

@@ -17,7 +17,7 @@ public class DAOFactory {
     
     ///issu d'openclassroom, a adapter a notre methode connection.
     
-    protected static Connection conn;   
+    protected static Connexion conn;   
    /*
     Static {
         Connection buffer = null; 
@@ -36,7 +36,7 @@ public class DAOFactory {
 */
     //A modifier pour inclure l'access en ligne
     //Pour l'instant Wamp
-    static {
+    /*static {
     Connexion buffer = null; 
     try
     {   //Utilisation du constructeur de M.Segado pour la connexion
@@ -48,7 +48,7 @@ public class DAOFactory {
             System.out.println("Attention exception: "+ a );
         }
     conn = buffer.getConnection() ; 
-    }    
+    } */   
     
   /**
   * Retourne un objet Bulletin interagissant avec la BDD

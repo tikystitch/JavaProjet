@@ -11,7 +11,7 @@ import modele.Bulletin_matiere;
  * @author louis
  */
 public class Bulletin_matiereDAO extends DAO<Bulletin_matiere>  {
-     public Bulletin_matiereDAO(Connection conn) {
+     public Bulletin_matiereDAO(Connexion conn) {
     super(conn);
   }
 
@@ -27,9 +27,9 @@ public class Bulletin_matiereDAO extends DAO<Bulletin_matiere>  {
     return false;
   }
   
-  /*
+  
   public Bulletin_matiere find(int id) {
-    
+    return null;     
   }
-*/
+
 }

@@ -5,42 +5,71 @@
  */
 package controleur;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.sql.SQLException;
-import modele.Eleve;
-import modele.Prof;
+import java.text.ParseException;
+import modele.*;
 
 /**
  *
  * @author vuong
  */
 public class test {
-     public static void main(String[] args) {
+     public static void main(String[] args) throws ParseException {
         //Sans utiliser la Factory
-       DAO<Eleve> eleveDao = null; 
-      // DAO<Prof> profDao=null;
+        //DAO<Eleve> eleveDao = null; 
+      
+       /* 
         try
          {
            Connexion  a = new Connexion ("projet_java","root", ""); 
-           eleveDao = new EleveDAO(a.getConnection());
-           //profDao = new ProfDAO(a.getConnection());
+           //eleveDao = new EleveDAO(a.getConnection());
+          // eleveDao = new EleveDAO(a);
+           
          }
          catch( ClassNotFoundException | SQLException b)
             {
                 System.out.println("Attention exception: "+ b );
             }
-          
-       //Eleve e1 = new Eleve(6, "Jimmou", "Vuong",1, 1);
-        //boolean update = eleveDao.add(e1);
-         Prof p1=new Prof(4, "moi", "Me",1,1);
-         //boolean update2=profDao.add(p1);
-         //En utilisant la factory
-         //DAO<Eleve> eleveDao = DAOFactory.getEleveDAO();
-         //Eleve e=new Eleve();
-         eleveDao.find(1);
-         Eleve e1=new Eleve(eleveDao.find(1).getId(),eleveDao.find(1).getNom(),eleveDao.find(1).getPrenom(),eleveDao.find(1).getClasse(),eleveDao.find(1).getBulletin());
-         
-       System.out.println("id:"+e1.getId()+" nom: "+e1.getNom()+"prenom: "+e1.getPrenom()+"classe:"+e1.getClasse()+"bulletin:"+e1.getBulletin());
+        */
+       
+        DAO<Trimestre> trimestreDao = null;
+        try
+         {
+           Connexion  a = new Connexion ("projet_java","root", ""); 
+
+           trimestreDao = new TrimestreDAO(a);
+         }
+         catch( ClassNotFoundException | SQLException b)
+            {
+                System.out.println("Attention exception: "+ b );
+            }
         
+        String date1="02/12/2012";
+        String date2="01/02/2013";
+        //SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
+        //SimpleDateFormat sdf2= new SimpleDateFormat("dd/MM/yyy");
+        //java.util.Date date1=null;
+        //java.util.Date date2=null;
+        
+        //Date date1=(Date) new SimpleDateFormat("dd/MM/yyyy").parse(sdate1);
+        //Date date2=(Date) new SimpleDateFormat("dd/MM/yyyy").parse(sdate2);
+        Trimestre c = new Trimestre(3,"deuxieme",  date1, date2,1);
+        boolean add= trimestreDao.add(c);
+        //System.out.println(bulletinDao.add(b)); 
+         
+         
+       //Eleve e = new Eleve(5, "Louis", "Samir",1, 1);
+        
+        //boolean add = eleveDao.add(e);
+        // boolean add = eleveDao.supp(e); 
+        //boolean add = eleveDao.update(e); 
+        //En utilisant la factory
+        //DAO<Eleve> eleveDao = DAOFactory.getEleveDAO();
+        
+       // System.out.println(eleveDao.find(1).getNom()); 
+       
        
      }   
 }

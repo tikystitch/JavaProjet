@@ -6,56 +6,64 @@
 package controleur;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import modele.Notes;
 /**
  *
  * @author louis
  */
 public class NotesDAO extends DAO<Notes> {
-    private Statement stmt; 
-    public NotesDAO(Connection conn) {
+     public NotesDAO(Connexion conn) {
     super(conn);
-    this.stmt = null;
   }
 
+     @Override
   public boolean add(Notes obj) {
     String query =  "INSERT INTO notes (id,note,appreciation,idbulletinmatiere) VALUES ("+ obj.getId() +
-                ",'"+obj.getNote()+
+                ","+obj.getNote()+
                 ",'"+obj.getAppreciation()+
                 "',"+obj.getId_bulletin_matiere()+")";
-     try{
-         this.stmt = this.connect.createStatement(); 
-         int rs = this.stmt.executeUpdate(query); 
-     }catch(SQLException e )
-     {
-         System.out.println(e);
-     } finally 
-     {
-         if (this.stmt != null )
-         {
-             try {
-                 this.stmt.close();
-             } catch (SQLException ex) {
-                 Logger.getLogger(NotesDAO.class.getName()).log(Level.SEVERE, null, ex);
-             }
-         }
-     }
-    
+     
+        try {
+            this.connect.executeUpdate(query);
+        } catch (SQLException ex) {
+            System.out.println("Add: " + ex); 
+        }
+ 
     return false;
   }
 
+     @Override
   public boolean supp(Notes obj) {
+         
+      //Requête pour supprimer
+      String query =  "DELETE FROM notes WHERE (id="+obj.getId()+")";
+       try {
+            this.connect.executeUpdate(query);
+        } catch (SQLException ex) {
+            System.out.println("Delete: "+ex); 
+        }
+
     return false;
   }
    
+     @Override
   public boolean update(Notes obj) {
-    return false;
+     
+      //Requête pour upadte
+      String query =  "UPDATE notes SET id="+obj.getId()+",note="+obj.getNote()+",appreciation='"+obj.getAppreciation()+
+                "',idbulletinmatiere="+obj.getId_bulletin_matiere()+
+                " WHERE (id="+obj.getId()+")";
+        try {
+            this.connect.executeUpdate(query);
+        } catch (SQLException ex) {
+            System.out.println("Update: "+ex); 
+        }
+ 
+   return false;
   }
   
   public Notes find(int id) {
-    return null;
+    return null; 
+    
   }
 }

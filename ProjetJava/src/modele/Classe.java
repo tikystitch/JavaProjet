@@ -23,11 +23,13 @@ public class Classe {
     public Classe() {
     }
     
-    public Classe(int id, String nom, String niveau, String annee_scolaire) {
+    public Classe(int id, String nom, String niveau, String annee_scolaire,int id_ecole,int id_eleve) {
         this.id=id;
         this.nom=nom;
         this.niveau=niveau;
         this.annee_scolaire=annee_scolaire;
+        this.id_ecole=id_ecole;
+        this.id_eleve=id_eleve;
         
     }
 

@@ -6,56 +6,63 @@
 package controleur;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import modele.Ecole;
 /**
  *
  * @author louis
  */
 public class EcoleDAO extends DAO<Ecole> {
-    private Statement stmt; 
-    public EcoleDAO(Connection conn) {
+     public EcoleDAO(Connexion conn) {
     super(conn);
-    this.stmt = null;
   }
 
+     @Override
   public boolean add(Ecole obj) {
+        //Requête pour add
     String query =  "INSERT INTO ecole (id,nom,idclasse) VALUES ("+ obj.getId() +
                 ",'"+obj.getNom()+
                 "',"+obj.getIdclasse()+")";
-     try{
-         this.stmt = this.connect.createStatement(); 
-         int rs = this.stmt.executeUpdate(query); 
-     }catch(SQLException e )
-     {
-         System.out.println(e);
-     } finally 
-     {
-         if (this.stmt != null )
-         {
-             try {
-                 this.stmt.close();
-             } catch (SQLException ex) {
-                 Logger.getLogger(EcoleDAO.class.getName()).log(Level.SEVERE, null, ex);
-             }
-         }
-     }
-    
+     
+        try {
+            this.connect.executeUpdate(query);
+        } catch (SQLException ex) {
+            System.out.println("Add: " + ex); 
+        }
+ 
     return false;
   }
 
+     @Override
   public boolean supp(Ecole obj) {
+         
+      //Requête pour supprimer
+      String query =  "DELETE FROM ecole WHERE (id="+obj.getId()+")";
+       try {
+            this.connect.executeUpdate(query);
+        } catch (SQLException ex) {
+            System.out.println("Delete: "+ex); 
+        }
+
     return false;
   }
    
+     @Override
   public boolean update(Ecole obj) {
-    return false;
+      
+      //Requête pour upadte
+      String query =  "UPDATE ecole SET id="+obj.getId()+",nom='"+obj.getNom()+"',idclasse="+obj.getIdclasse()+
+                " WHERE (id="+obj.getId()+")";
+        try {
+            this.connect.executeUpdate(query);
+        } catch (SQLException ex) {
+            System.out.println("Update: "+ex); 
+        }
+ 
+   return false;
   }
  
   public Ecole find(int id) {
-    return null;
+    return null;     
   }
 
 }

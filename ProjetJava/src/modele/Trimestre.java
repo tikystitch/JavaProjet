@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package modele;
-
 import java.sql.Date;
 
 /**
@@ -14,18 +13,19 @@ import java.sql.Date;
 public class Trimestre {
     private int id=0;
     private String nom="";
-    private Date dateDebut;
-    private Date dateFin;
+    private String dateDebut;
+    private String dateFin;
     private int id_bulletin=0;
 
     public Trimestre() {
     }
     
-    public Trimestre(int id, String nom, Date debut, Date fin) {
+    public Trimestre(int id, String nom, String debut, String fin, int id_bulletin) {
         this.id=id;
         this.nom=nom;
         this.dateDebut=debut;
         this.dateFin=fin;
+        this.id_bulletin=id_bulletin;
     }
 
     public int getId() {
@@ -44,19 +44,19 @@ public class Trimestre {
         this.nom = nom;
     }
 
-    public Date getDateDebut() {
+    public String getDateDebut() {
         return dateDebut;
     }
 
-    public void setDateDebut(Date dateDebut) {
+    public void setDateDebut(String dateDebut) {
         this.dateDebut = dateDebut;
     }
 
-    public Date getDateFin() {
+    public String getDateFin() {
         return dateFin;
     }
 
-    public void setDateFin(Date dateFin) {
+    public void setDateFin(String dateFin) {
         this.dateFin = dateFin;
     }
 
@@ -67,6 +67,5 @@ public class Trimestre {
     public void setId_bulletin(int id_bulletin) {
         this.id_bulletin = id_bulletin;
     }
-    
     
 }

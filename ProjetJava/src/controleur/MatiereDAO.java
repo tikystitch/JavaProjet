@@ -6,58 +6,65 @@
 package controleur;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import modele.Matiere;
 /**
  *
  * @author louis
  */
 public class MatiereDAO extends DAO<Matiere> {
-     private Statement stmt;
-    public MatiereDAO(Connection conn) {
+     public MatiereDAO(Connexion conn) {
     super(conn);
-    this.stmt = null;
   }
 
   public boolean add(Matiere obj) {
-    String query =  "INSERT INTO enseignement (id,note,appreciation,bulletin,prof) VALUES ("+ obj.getId() +
-                ",'"+obj.getNote()+
+            //Requête pour add
+    String query =  "INSERT INTO matiere (id,note,appreciation,bulletin,prof) VALUES ("+ obj.getId() +
+                ","+obj.getNote()+
                 ",'"+obj.getAppreciation()+
                 "',"+obj.getBulletin()+
                 ","+obj.getProf()+")";
-     try{
-         this.stmt = this.connect.createStatement(); 
-         int rs = this.stmt.executeUpdate(query); 
-     }catch(SQLException e )
-     {
-         System.out.println(e);
-     } finally 
-     {
-         if (this.stmt != null )
-         {
-             try {
-                 this.stmt.close();
-             } catch (SQLException ex) {
-                 Logger.getLogger(MatiereDAO.class.getName()).log(Level.SEVERE, null, ex);
-             }
-         }
-     }
-    
+     
+        try {
+            this.connect.executeUpdate(query);
+        } catch (SQLException ex) {
+            System.out.println("Add: " + ex); 
+        }
+ 
     return false;
   }
 
+     @Override
   public boolean supp(Matiere obj) {
+         
+      //Requête pour supprimer
+      String query =  "DELETE FROM matiere WHERE (id="+obj.getId()+")";
+       try {
+            this.connect.executeUpdate(query);
+        } catch (SQLException ex) {
+            System.out.println("Delete: "+ex); 
+        }
+
     return false;
   }
    
+     @Override
   public boolean update(Matiere obj) {
-    return false;
+    
+      //Requête pour upadte
+      String query =  "UPDATE matiere SET id="+obj.getId()+",note="+obj.getNote()+",appreciation='"+obj.getAppreciation()+
+                "',bulletin="+obj.getBulletin()+
+                ",prof="+obj.getProf()+" WHERE (id="+obj.getId()+")";
+        try {
+            this.connect.executeUpdate(query);
+        } catch (SQLException ex) {
+            System.out.println("Update: "+ex); 
+        }
+ 
+   return false;
   }
   
   
   public Matiere find(int id) {
-    return null;
+     return null;    
   }
 }

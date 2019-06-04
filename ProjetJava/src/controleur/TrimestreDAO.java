@@ -6,57 +6,65 @@
 package controleur;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import modele.Trimestre;
 /**
  *
  * @author louis
  */
 public class TrimestreDAO extends DAO<Trimestre> {
-     private Statement stmt;  
-    public TrimestreDAO(Connection conn) {
+     public TrimestreDAO(Connexion conn) {
     super(conn);
-    this.stmt = null;
   }
 
+     @Override
   public boolean add(Trimestre obj) {
     String query =  "INSERT INTO trimestre (id,nom,debut,fin,idbulletin) VALUES ("+ obj.getId() +
                 ",'"+obj.getNom()+
                 "','"+obj.getDateDebut()+
                 "','"+obj.getDateFin()+
                 "',"+obj.getId_bulletin()+")";
-     try{
-         this.stmt = this.connect.createStatement(); 
-         int rs = this.stmt.executeUpdate(query); 
-     }catch(SQLException e )
-     {
-         System.out.println(e);
-     } finally 
-     {
-         if (this.stmt != null )
-         {
-             try {
-                 this.stmt.close();
-             } catch (SQLException ex) {
-                 Logger.getLogger(TrimestreDAO.class.getName()).log(Level.SEVERE, null, ex);
-             }
-         }
-     }
-    
+     
+        try {
+            this.connect.executeUpdate(query);
+        } catch (SQLException ex) {
+            System.out.println("Add: " + ex); 
+        }
+ 
     return false;
   }
 
+     @Override
   public boolean supp(Trimestre obj) {
+        
+      //Requête pour supprimer
+      String query =  "DELETE FROM trimestre WHERE (id="+obj.getId()+")";
+       try {
+            this.connect.executeUpdate(query);
+        } catch (SQLException ex) {
+            System.out.println("Delete: "+ex); 
+        }
+
     return false;
   }
    
+     @Override
   public boolean update(Trimestre obj) {
-    return false;
+      
+      //Requête pour upadte
+      String query =  "UPDATE trimestre SET id="+obj.getId()+",nom='"+obj.getNom()+"',debut='"+obj.getDateDebut()+
+                "',fin='"+obj.getDateFin()+
+                "',idbulletin="+obj.getId_bulletin()+" WHERE (id="+obj.getId()+")";
+        try {
+            this.connect.executeUpdate(query);
+        } catch (SQLException ex) {
+            System.out.println("Update: "+ex); 
+        }
+ 
+   return false;
   }
  
   public Trimestre find(int id) {
-    return null;
+    return null;     
   }
+
 }

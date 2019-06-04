@@ -5,62 +5,70 @@
  */
 package controleur;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import modele.Classe;
-
 /**
  *
  * @author louis
  */
 public class ClasseDAO extends DAO<Classe>{
-     private Statement stmt; 
-    public ClasseDAO(Connection conn) {
+     public ClasseDAO(Connexion conn) {
     super(conn);
-    this.stmt = null;
   }
 
+     @Override
   public boolean add(Classe obj) {
+         //Requête pour add
     String query =  "INSERT INTO classe (id,nom, niveau, anneescolaire,idecole,ideleve) VALUES ("+ obj.getId() +
                 ",'"+obj.getNom()+
                 "','"+obj.getNiveau()+
                 "','"+obj.getAnnee_scolaire()+
                 "',"+obj.getId_ecole()+
-                "',"+obj.getId_eleve()+")";
-     try{
-         this.stmt = this.connect.createStatement(); 
-         int rs = this.stmt.executeUpdate(query); 
-     }catch(SQLException e )
-     {
-         System.out.println(e);
-     } finally 
-     {
-         if (this.stmt != null )
-         {
-             try {
-                 this.stmt.close();
-             } catch (SQLException ex) {
-                 Logger.getLogger(ClasseDAO.class.getName()).log(Level.SEVERE, null, ex);
-             }
-         }
-     }
-    
+                ","+obj.getId_eleve()+")";
+     
+        try {
+            this.connect.executeUpdate(query);
+        } catch (SQLException ex) {
+            System.out.println("Add: " + ex); 
+        }
+ 
     return false;
   }
 
+     @Override
   public boolean supp(Classe obj) {
+         
+      //Requête pour supprimer
+      String query =  "DELETE FROM classe WHERE (id="+obj.getId()+")";
+       try {
+            this.connect.executeUpdate(query);
+        } catch (SQLException ex) {
+            System.out.println("Delete: "+ex); 
+        }
+
     return false;
   }
    
+     @Override
   public boolean update(Classe obj) {
-    return false;
+      
+      //Requête pour upadte
+      String query =  "UPDATE classe SET id="+obj.getId()+",nom='"+obj.getNom()+"',niveau='"+obj.getNiveau()+
+                "',anneescolaire='"+obj.getAnnee_scolaire()+
+                "',idecole="+obj.getId_ecole()+",ideleve="+obj.getId_eleve()+" WHERE (id="+obj.getId()+")";
+        try {
+            this.connect.executeUpdate(query);
+        } catch (SQLException ex) {
+            System.out.println("Update: "+ex); 
+        }
+ 
+   return false;
   }
   
-  
+ 
   public Classe find(int id) {
-      return null;
+    return null; 
+    
   }
+
 }

@@ -75,6 +75,7 @@ public class Connexion {
      * @throws java.sql.SQLException
      * @throws java.lang.ClassNotFoundException
      */
+      
     public Connexion(String usernameECE, String passwordECE, String loginDatabase, String passwordDatabase) throws SQLException, ClassNotFoundException {
         // chargement driver "com.mysql.jdbc.Driver"
         Class.forName("com.mysql.jdbc.Driver");
@@ -139,6 +140,8 @@ public class Connexion {
      * @return
      * @throws java.sql.SQLException
      */
+    
+    //Donne les noms des colonnes de la Table.
     public ArrayList remplirChampsTable(String table) throws SQLException {
         // récupération de l'ordre de la requete
         rset = stmt.executeQuery("select * from " + table);
@@ -174,6 +177,8 @@ public class Connexion {
      * @return 
      * @throws java.sql.SQLException
      */
+    
+    //Renvoi sous forme de String le resultat de la requête
     public ArrayList remplirChampsRequete(String requete) throws SQLException {
         // récupération de l'ordre de la requete
         rset = stmt.executeQuery(requete);
@@ -217,4 +222,5 @@ public class Connexion {
     public void executeUpdate(String requeteMaj) throws SQLException {
         stmt.executeUpdate(requeteMaj);
     }
+  
 }

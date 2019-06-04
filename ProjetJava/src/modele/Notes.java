@@ -18,10 +18,11 @@ public class Notes {
     public Notes() {
     }
     
-    public Notes(int id, int note, String appreciation) {
+    public Notes(int id, int note, String appreciation, int id_bulletin_matiere) {
         this.id=id;
         this.note=note;
         this.appreciation=appreciation;
+        this.id_bulletin_matiere=id_bulletin_matiere;
     }    
 
     public int getId() {

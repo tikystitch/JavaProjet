@@ -4,12 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/vuong/Documents/ECE/ing3/Java/Projet2019/ProjetJava/src/controleur/test.java</file>
-            <file>file:/D:/vuong/Documents/ECE/ing3/Java/Projet2019/ProjetJava/src/controleur/ClasseDAO.java</file>
-            <file>file:/D:/vuong/Documents/ECE/ing3/Java/Projet2019/ProjetJava/src/controleur/EleveDAO.java</file>
             <file>file:/D:/vuong/Documents/ECE/ing3/Java/Projet2019/ProjetJava/src/controleur/Connexion.java</file>
             <file>file:/D:/vuong/Documents/ECE/ing3/Java/Projet2019/ProjetJava/src/controleur/DAO.java</file>
-            <file>file:/D:/vuong/Documents/ECE/ing3/Java/Projet2019/ProjetJava/src/controleur/DAOFactory.java</file>
-            <file>file:/D:/vuong/Documents/ECE/ing3/Java/Projet2019/ProjetJava/src/controleur/BulletinDAO.java</file>
+            <file>file:/D:/vuong/Documents/ECE/ing3/Java/Projet2019/ProjetJava/src/modele/Bulletin_matiere.java</file>
         </group>
     </open-files>
 </project-private>

@@ -20,9 +20,10 @@ public class Ecole {
     public Ecole() {
     }
     
-     public Ecole(int id, String nom) {
+     public Ecole(int id, String nom, int idclasse) {
          this.id=id;
          this.nom=nom;
+         this.idclasse=idclasse;
     }
 
     public int getId() {

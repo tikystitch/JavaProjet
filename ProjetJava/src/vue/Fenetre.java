@@ -83,7 +83,6 @@ public class Fenetre extends JFrame {
     
     //Création de la JTable grâce aux données recueiillis 
     JTable table = new JTable(personnes, tbN);       
-    //JScrollPane pouf = new JScrollPane(table); 
     
     //Pour bidouiller le tableau 
     table.setRowHeight(32);

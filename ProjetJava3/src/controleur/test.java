@@ -10,6 +10,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import javax.swing.JTable;
 import modele.*;
+import vue.AddEleve;
 import vue.Fenetre;
 
 /**
@@ -20,8 +21,8 @@ public class test {
      public static void main(String[] args) throws ParseException {
         //Sans utiliser la Factory
         DAO<Eleve> eleveDao = null; 
-        Fenetre fenetre = new Fenetre();
-        
+       // Fenetre fenetre = new Fenetre();
+        AddEleve eleve=new AddEleve();
         try
          {
            Connexion  a = new Connexion ("projet_java","root", ""); 
